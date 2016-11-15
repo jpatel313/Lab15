@@ -17,9 +17,9 @@ namespace Lab15
 
             Console.WriteLine("Welcome to the Countries Maintenance App!");
 
-            bool agree = Continue();
-            while (agree)
-            {
+            //bool agree = Continue();
+            //while (agree==true)
+            //{
                 //Menu
                 Console.WriteLine("\n1 - See the list of Countries\n2 - Add a country\n3 - Exit");
                 Console.WriteLine("Enter menu number");
@@ -33,12 +33,11 @@ namespace Lab15
 
         }
 
-        private static bool Continue()
-        {
-            return true;
-        }
+        //public static bool Continue()
+        //{
+        //    return true;
+        //}
 
-        //display.menuMethod( menu);
     }
 
- }
+ 

@@ -9,10 +9,9 @@ namespace Lab15
 {
     public class CountriesApp
     {
-        private string input;
-
         public void menuMethod(int menu)
         {
+
             switch (menu)
             {
                 case 1:
@@ -22,19 +21,25 @@ namespace Lab15
                     foreach (CountriesTextFile country in CTFList)
                     {
 
-                        Console.WriteLine($"Countries:\n{country}");
+                        Console.WriteLine($"\n{country}");
                     }
 
                     break;
 
                 case 2:
-                    CountriesTextFile.WriteFile(input);
+
+                    Console.WriteLine("Type a country: ");
+                    string countries = Console.ReadLine();
+
+                    CountriesTextFile.WriteFile(countries);
                     
                     break;
 
                 default:
 
-                    Console.WriteLine("See-ya!");
+                    Console.WriteLine("Bye!");
+                    
+                    //Program.Continue();
                     break;
             }
         }

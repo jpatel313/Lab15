@@ -11,7 +11,7 @@ namespace Lab15
     {
         #region Properties
         private string Countries;
-        //private string input;
+        
         public string Countries1
         {
             get
@@ -61,14 +61,14 @@ namespace Lab15
 
         }
 
-        public static void WriteFile(string input)
+        public static void WriteFile(string countries)
         {
             StreamWriter wc = new StreamWriter("../../DataFile.txt", true);
             Console.WriteLine("Type the name of the country to be added:");
 
-            input = Console.ReadLine();
+            countries = Console.ReadLine();
 
-            wc.Write($"\n{input}");
+            wc.Write($"\n{countries}");
             wc.Close();
         }
     }
