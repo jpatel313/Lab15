@@ -10,24 +10,35 @@ namespace Lab15
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
+
         {
-            Console.WriteLine("Welcome to the Countries Maintenance App!\n1 - See the list of Countries\n2 - Add a country\n3 - Exit");
-            Console.WriteLine("Enter menu number");
-
-            public int menu = int.Parse(Console.ReadLine());
-            //CountriesApp menu1 = new CountriesApp();
 
 
+            Console.WriteLine("Welcome to the Countries Maintenance App!");
 
-            List<CountriesTextFile> CountriesTextFileList = new List<CountriesTextFile>();
-            StreamWriter sw = new StreamWriter("../../countries.txt", true);
+            bool agree = Continue();
+            while (agree)
+            {
+                //Menu
+                Console.WriteLine("\n1 - See the list of Countries\n2 - Add a country\n3 - Exit");
+                Console.WriteLine("Enter menu number");
+                int menu = int.Parse(Console.ReadLine());
 
-            //call countries app 
+                //Call countries app for menu options
+                CountriesApp display = new CountriesApp();
+                display.menuMethod(menu);
+            }
+
 
         }
 
+        private static bool Continue()
+        {
+            return true;
+        }
 
+        //display.menuMethod( menu);
     }
 
-}
+ }

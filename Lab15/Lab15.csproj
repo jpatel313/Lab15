@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddToTextFile.cs" />
     <Compile Include="CountriesApp.cs" />
     <Compile Include="CountriesTextFile.cs" />
     <Compile Include="Program.cs" />

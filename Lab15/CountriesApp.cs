@@ -7,30 +7,36 @@ using System.IO;
 
 namespace Lab15
 {
-    class CountriesApp
+    public class CountriesApp
     {
+        private string input;
+
         public void menuMethod(int menu)
         {
-            int option = 1;
-            switch (option)
+            switch (menu)
             {
                 case 1:
-                    Console.WriteLine();
-                    Console.ReadLine();
+                    
+                    List<CountriesTextFile> CTFList = CountriesTextFile.ReadFile();
+                    
+                    foreach (CountriesTextFile country in CTFList)
+                    {
+
+                        Console.WriteLine($"Countries:\n{country}");
+                    }
+
                     break;
+
                 case 2:
-                    Console.WriteLine("Case 2");
+                    CountriesTextFile.WriteFile(input);
+                    
                     break;
+
                 default:
-                    Console.WriteLine("Default case");
+
+                    Console.WriteLine("See-ya!");
                     break;
             }
         }
-    
-        
-        ///display menu
-       /// add method to read file
-       /// add method to write to file
-       ///add abstract class.
     }
 }

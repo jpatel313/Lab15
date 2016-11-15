@@ -7,11 +7,11 @@ using System.IO;
 
 namespace Lab15
 {
-    class CountriesTextFile
+    public class CountriesTextFile
     {
         #region Properties
-        static string Countries;
-
+        private string Countries;
+        //private string input;
         public string Countries1
         {
             get
@@ -24,51 +24,52 @@ namespace Lab15
                 Countries = value;
             }
         }
+
+        //public string Input
+        //{
+        //    get
+        //    {
+        //        return input;
+        //    }
+
+        //    set
+        //    {
+        //        input = value;
+        //    }
+        //}
         #endregion
 
-        public 
-            (string Countries)
-        {
-            this.Countries = Countries1;
-        }
+        //public CountriesTextFile()
+        //{
+        //    Countries = countries;
+        //}
 
-        private static List<CountriesTextFile> ReadFromFile()
+        //Method to read countries.txt file
+        public static List<CountriesTextFile> ReadFile()
         {
             List<CountriesTextFile> CountryList = new List<CountriesTextFile>();
-
             string fileLocation = "../../countries.txt";
 
             StreamReader reader = new StreamReader(fileLocation);
 
+            string data = reader.ReadToEnd().Trim();
+
+            string[] Records = data.Split('\n');
+
             reader.Close();
             return CountryList;
+
         }
 
-    public AddToTextFile(string Countries) : base(Countries)
-
+        public static void WriteFile(string input)
         {
+            StreamWriter wc = new StreamWriter("../../DataFile.txt", true);
+            Console.WriteLine("Type the name of the country to be added:");
 
-    }
+            input = Console.ReadLine();
 
-    public static void WriteDataToFile(string inputCountry)
-    {
-        StreamWriter sw = new StreamWriter("../../DataFile.txt", true);
-
-        foreach (countries c1 in CountriesTextFile)
-        {
-
-            //3 ways:
-            //Console.WriteLine(Emp.Name1 + "=>" + Emp.Salary1);
-            //Console.WriteLine($"Name: {Emp.Name1}, Salary:{Emp.Salary1}");
-            // Console.WriteLine("Name:{0}, Salary:{1}", Emp.Name1, Emp.Salary1);
+            wc.Write($"\n{input}");
+            wc.Close();
         }
-
-       sw.Write($"\n{inputCountry}");
-        sw.Close();
-
-
-
-
     }
 }
-
