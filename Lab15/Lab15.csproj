@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="CountriesApp.cs" />
     <Compile Include="CountriesTextFile.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

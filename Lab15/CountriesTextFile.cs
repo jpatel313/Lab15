@@ -9,67 +9,74 @@ namespace Lab15
 {
     public class CountriesTextFile
     {
-        #region Properties
-        private string Countries;
-        
-        public string Countries1
+
+        private string countries;
+        private List<CountriesTextFile> CountryList = new List<CountriesTextFile>();
+        public string Countries
         {
             get
             {
-                return Countries;
+                return countries;
             }
 
             set
             {
-                Countries = value;
+                countries = value;
             }
         }
 
-        //public string Input
-        //{
-        //    get
-        //    {
-        //        return input;
-        //    }
-
-        //    set
-        //    {
-        //        input = value;
-        //    }
-        //}
-        #endregion
-
-        //public CountriesTextFile()
-        //{
-        //    Countries = countries;
-        //}
-
-        //Method to read countries.txt file
-        public static List<CountriesTextFile> ReadFile()
+        public static List<CountriesTextFile>ReadFile()
         {
-            List<CountriesTextFile> CountryList = new List<CountriesTextFile>();
-            string fileLocation = "../../countries.txt";
+            List<CountriesTextFile> CountryList = new List<CountriesTextFile>();//create a list to store countries
 
-            StreamReader reader = new StreamReader(fileLocation);
+           // string [] fileLocation = new string []("../../countries.txt");//create a string from text file
 
-            string data = reader.ReadToEnd().Trim();
+           // fileLocation.Split('\n');//split each country string apart
+            string line;
+            string file = "../../countries.txt";
+            StreamReader reader = new StreamReader(file);
 
-            string[] Records = data.Split('\n');
-
+            while (reader.EndOfStream==false)
+            {
+                line = reader.ReadLine();
+                Console.WriteLine(line);
+            }
+            Console.ReadLine();
             reader.Close();
-            return CountryList;
+            
+            
 
+            ////reads text file
+            //string textString = reader.ReadToEnd().Trim();//turns text into string
+            // = textString.Split('\n');//splits string at each line, outs into array
+
+
+
+            //Console.WriteLine($"Country: {textArray}");
+            //reader.Close();
+
+            //return textArray;
+
+            return CountryList;
         }
 
-        public static void WriteFile(string countries)
+        public static void WriteString(string countries)
         {
             StreamWriter wc = new StreamWriter("../../DataFile.txt", true);
-            Console.WriteLine("Type the name of the country to be added:");
 
-            countries = Console.ReadLine();
+            wc.Write($"\n: {countries}");
 
-            wc.Write($"\n{countries}");
             wc.Close();
         }
+     
+        //public static void SaveToFile()
+
+        //{
+        //    StreamWriter cl = new StreamWriter("../../DataFile.txt", true);
+
+        //    cl.WriteLine();
+
+        //    cl.Dispose();
+         
     }
 }
