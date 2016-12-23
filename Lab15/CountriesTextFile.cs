@@ -9,74 +9,88 @@ namespace Lab15
 {
     public class CountriesTextFile
     {
+        private string country;
+        public string Country
+        {
+            get { return country; }
+            set { country = value; }
+        }
 
-        private string countries;
-        private List<CountriesTextFile> CountryList = new List<CountriesTextFile>();
-        public string Countries
+        public List<string> CountryList1
         {
             get
             {
-                return countries;
+                return CountryList;
             }
 
             set
             {
-                countries = value;
+                CountryList = value;
             }
         }
 
-        public static List<CountriesTextFile>ReadFile()
-        {
-            List<CountriesTextFile> CountryList = new List<CountriesTextFile>();//create a list to store countries
+        private List<string> CountryList;
+        //string fileLocation = ("../../countries.txt"); 
+        //foreach (var item in CountryList)
+        //    {
+        //        CountryList.Add();
 
-           // string [] fileLocation = new string []("../../countries.txt");//create a string from text file
+        //    }
 
-           // fileLocation.Split('\n');//split each country string apart
-            string line;
-            string file = "../../countries.txt";
-            StreamReader reader = new StreamReader(file);
 
-            while (reader.EndOfStream==false)
+        public static List<string> ReadFile()
+        {   
+            string fileLocation = ("../../countries.txt");
+
+            List<string> CountryList = new List<string>();
+
+            using (StreamReader reader = new StreamReader(fileLocation, true))
             {
-                line = reader.ReadLine();
-                Console.WriteLine(line);
+                //Ensure last line is read.
+                while (reader.EndOfStream == false)
+                {
+                    string countries = reader.ReadToEnd().Trim();
+
+                    //Strings are split by each new line.
+                    string[] CountryArray = countries.Split('\n');
+
+                    foreach (var country in CountryArray)
+                    {
+                       CountryList.Add(country);
+                       Console.WriteLine(country);
+                    }
+                }
+                return CountryList;
             }
-            Console.ReadLine();
-            reader.Close();
-            
-            
-
-            ////reads text file
-            //string textString = reader.ReadToEnd().Trim();//turns text into string
-            // = textString.Split('\n');//splits string at each line, outs into array
-
-
-
-            //Console.WriteLine($"Country: {textArray}");
-            //reader.Close();
-
-            //return textArray;
-
-            return CountryList;
         }
 
-        public static void WriteString(string countries)
+        public static void WriteString(string countries, List<string> CountryList)
         {
-            StreamWriter wc = new StreamWriter("../../DataFile.txt", true);
+            //Get Countrylist from read method.
+            ReadFile();
 
-            wc.Write($"\n: {countries}");
+            //Add country to list.
+            CountryList.Add("\n"+countries);
 
-            wc.Close();
+            //Open stream to file.
+            StreamWriter writeToFile = new StreamWriter("../../countries.txt", true);
+
+
+            foreach (string country in CountryList)
+
+            {
+                //Write each country to file.
+                 writeToFile.Write(country);
+            }
+
+            //Close the I/O stream.
+            writeToFile.Close();
+
+            writeToFile.Dispose();
+            //Return list to show user country has been added.
+           
         }
-     
-        //public static void SaveToFile()
-
-        //{
-        //    StreamWriter cl = new StreamWriter("../../DataFile.txt", true);
-
-        //    cl.WriteLine();
-
-        //    cl.Dispose();
-         
+        
     }
 }
+    
